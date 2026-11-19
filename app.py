@@ -56,7 +56,13 @@ st.markdown(
     """
 <style>
 .stApp { background-color: #FAF9F5; }
-html, body, [data-testid="stAppViewContainer"] { color: #343832; }
+/* 字体栈以韩文为适配标准（默认语言），中文与英文通过系统字体回退保证清晰 */
+html, body, .stApp, [data-testid="stAppViewContainer"] {
+    color: #343832;
+    font-family: "Pretendard Variable", "Pretendard", -apple-system,
+        "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+        "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
 h1, h2, h3, h4 { color: #343832; font-weight: 600; }
 
 .tea-card {
@@ -284,6 +290,27 @@ TEXT = {
 def t(key):
     """按当前语言取出界面文案。"""
     return TEXT[key][st.session_state.lang]
+
+
+def inject_lang_typography():
+    """按当前语言微调排版。
+
+    以韩文为适配标准：韩文按词换行（keep-all），避免音节在词中间被拆开，
+    并适当加大行高提升长段落可读性；中文与英文保持默认排版。
+    """
+    if st.session_state.lang == "ko":
+        st.markdown(
+            """
+<style>
+.stApp p, .stApp li, .stApp h1, .stApp h2, .stApp h3, .stApp h4,
+.stApp button, .stApp label, [data-testid="stMarkdownContainer"] {
+    word-break: keep-all;
+    line-height: 1.75;
+}
+</style>
+""",
+            unsafe_allow_html=True,
+        )
 
 
 # ============================================================
@@ -1563,6 +1590,7 @@ def render_footer():
 # ============================================================
 # 9) 主流程路由：登录 → 介绍 → 问卷 → 结果
 # ============================================================
+inject_lang_typography()  # 韩文按词换行与行高微调，其他语言保持默认
 if not st.session_state.authed:
     # 未通过验证前，无法查看测试介绍、问卷及结果
     page_login()
