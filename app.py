@@ -105,8 +105,49 @@ div[data-testid="stFormSubmitButton"] > button:hover { background: #687663; }
 .footer-art {
     width: 100%; opacity: 0.07; pointer-events: none; margin-top: 30px;
 }
-/* 手机端隐藏边角装饰，优先展示题目与结果 */
+/* 选项按钮：一眼可辨的可点击样式（描边、悬停、选中高亮）
+   说明：该控件实际 testid 为 stButtonGroup，选项渲染为 role=radio 的元素，
+   选中项带 data-selected 属性；不强制等宽，避免截断选项文字 */
+div[data-testid="stButtonGroup"] [role="radio"] {
+    border: 1.5px solid #C3CCBB !important;
+    background: #FFFEFB !important;
+    border-radius: 10px !important;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+div[data-testid="stButtonGroup"] [role="radio"]:hover {
+    border-color: #788774 !important;
+    background: #EDF1E8 !important;
+}
+div[data-testid="stButtonGroup"] [role="radio"][data-selected] {
+    background: #788774 !important;
+    border-color: #788774 !important;
+    color: #FFFEFB !important;
+    font-weight: 600;
+}
+div[data-testid="stButtonGroup"] [role="radio"][data-selected] * {
+    color: #FFFEFB !important;
+}
+div[data-testid="stButtonGroup"] [role="radio"]:hover {
+    border-color: #788774 !important;
+    background: #EDF1E8 !important;
+}
+div[data-testid="stButtonGroup"] [role="radio"][data-selected] {
+    background: #788774 !important;
+    border-color: #788774 !important;
+    color: #FFFEFB !important;
+    font-weight: 600;
+}
+div[data-testid="stButtonGroup"] [role="radio"][data-selected] * {
+    color: #FFFEFB !important;
+}
+/* 手机端：选项按钮保持单行，适当缩小字号与内边距 */
 @media (max-width: 640px) {
+    div[data-testid="stButtonGroup"] [role="radio"] {
+        font-size: 0.78rem;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
     .corner-leaf, .footer-art { display: none; }
     .tea-card { padding: 16px 16px; }
 }
@@ -551,9 +592,9 @@ QUESTIONS = [
         "right": {"zh": "愿意按温杯、投茶、注水的步骤完整冲泡", "ko": "잔 데우기, 찻잎 넣기, 물 붓기까지 순서대로 우린다", "en": "Following the full steps — warming the cup, adding leaves, pouring water"},
         "mid": {"zh": "中间位置表示介于两者之间，同样是有效回答", "ko": "가운데 위치도 둘 사이를 뜻하는 유효한 답변입니다", "en": "In-between positions are valid answers, meaning something between the two"},
         "labels": {
-            "zh": ["怎么方便怎么来", "基本随意", "略微随意", "略微讲究", "比较讲究", "按步骤完整冲泡"],
-            "ko": ["편한 대로", "대체로 자유롭게", "약간 자유롭게", "약간 정성 들이기", "꽤 정성 들이기", "순서대로 정성껏"],
-            "en": ["Whatever is easiest", "Mostly casual", "Slightly casual", "Slightly careful", "Fairly careful", "Full step-by-step brewing"],
+            "zh": ["随意泡", "偏随意", "略随意", "略讲究", "偏讲究", "完整冲泡"],
+            "ko": ["편하게", "다소 편하게", "약간 편하게", "약간 정성", "다소 정성", "정성껏"],
+            "en": ["Easiest", "Mostly casual", "Slightly casual", "Slightly careful", "Fairly careful", "Full steps"],
         },
         "primary": "ritual_aesthete",
         "secondary": "easy_daily",
