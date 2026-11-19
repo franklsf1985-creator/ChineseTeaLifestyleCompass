@@ -22,7 +22,7 @@ import streamlit as st
 st.set_page_config(
     page_title="中国茶生活风格罗盘 · Chinese Tea Lifestyle Compass",
     page_icon="🍵",
-    layout="centered",
+    layout="wide",  # 面向 PC 的宽版布局，内容宽度由下方 CSS 约束
 )
 
 ACCESS_CODE = "pnumis"  # 固定访问码（轻量门槛，非生产级安全认证）
@@ -56,6 +56,13 @@ st.markdown(
     """
 <style>
 .stApp { background-color: #FAF9F5; }
+/* 面向 PC 桌面阅读：内容区限宽居中，充分利用宽屏同时保持舒适行宽 */
+.block-container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-top: 2.2rem;
+    padding-bottom: 2.5rem;
+}
 /* 字体栈以韩文为适配标准（默认语言），中文与英文通过系统字体回退保证清晰 */
 html, body, .stApp, [data-testid="stAppViewContainer"] {
     color: #343832;
@@ -65,12 +72,13 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {
 }
 h1, h2, h3, h4 { color: #343832; font-weight: 600; }
 
+/* 面向 PC：卡片留白与圆角略放大，宽屏下阅读更舒展 */
 .tea-card {
     background: #FFFEFB;
     border: 1px solid #E7EAE0;
-    border-radius: 16px;
-    padding: 22px 24px;
-    margin: 6px 0 18px 0;
+    border-radius: 18px;
+    padding: 26px 30px;
+    margin: 8px 0 20px 0;
     box-shadow: 0 1px 3px rgba(52,56,50,0.05);
 }
 .tea-band {
@@ -96,6 +104,13 @@ div[data-testid="stFormSubmitButton"] > button {
     border-radius: 10px; padding: 0.55rem 1.6rem; font-size: 1.02rem;
 }
 div[data-testid="stFormSubmitButton"] > button:hover { background: #687663; }
+
+/* 风格预览卡片：统一最小高度，避免标签句折行不同导致高矮不一 */
+.style-preview {
+    min-height: 122px;
+    display: flex;
+    flex-direction: column;
+}
 
 /* 角落茶叶线稿与底部远山：仅装饰，不拦截点击 */
 .corner-leaf {
@@ -141,16 +156,7 @@ div[data-testid="stButtonGroup"] [role="radio"][data-selected] {
 div[data-testid="stButtonGroup"] [role="radio"][data-selected] * {
     color: #FFFEFB !important;
 }
-/* 手机端：选项按钮保持单行，适当缩小字号与内边距 */
-@media (max-width: 640px) {
-    div[data-testid="stButtonGroup"] [role="radio"] {
-        font-size: 0.78rem;
-        padding-left: 4px !important;
-        padding-right: 4px !important;
-    }
-    .corner-leaf, .footer-art { display: none; }
-    .tea-card { padding: 16px 16px; }
-}
+/* 面向 PC 展示：不做移动端适配处理 */
 </style>
 """,
     unsafe_allow_html=True,
@@ -1399,7 +1405,7 @@ def page_intro():
         for col, sid in zip(cols, STYLE_ORDER[i : i + 2]):
             s = STYLES[sid]
             col.markdown(
-                f"<div class='tea-card' style='margin-bottom:10px'>"
+                f"<div class='tea-card style-preview' style='margin-bottom:10px'>"
                 f"<div style='display:flex;align-items:center;gap:10px'>"
                 f"{STYLE_ICONS[sid]}<b>{s['name'][st.session_state.lang]}</b></div>"
                 f"<p class='tagline' style='margin-top:8px'>{s['tagline'][st.session_state.lang]}</p>"
