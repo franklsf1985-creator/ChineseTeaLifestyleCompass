@@ -41,8 +41,8 @@ STYLE_ORDER = [
 LANG_OPTIONS = ["zh", "ko", "en"]
 LANG_NAMES = {"zh": "简体中文", "ko": "한국어", "en": "English"}
 
-# 会话状态初始化：语言、登录状态、是否开始测试、测试结果
-st.session_state.setdefault("lang", "zh")
+# 会话状态初始化：语言（默认韩语）、登录状态、是否开始测试、测试结果
+st.session_state.setdefault("lang", "ko")
 st.session_state.setdefault("authed", False)
 st.session_state.setdefault("started", False)
 st.session_state.setdefault("result", None)
