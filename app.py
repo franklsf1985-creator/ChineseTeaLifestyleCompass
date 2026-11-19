@@ -1333,42 +1333,41 @@ def do_logout():
 
 
 def page_login():
-    """登录页：居中窄卡片 + 盖碗线稿 + 语言选择 + 访问码输入。"""
+    """登录页：盖碗线稿 + 语言选择 + 访问码输入。
+    卡片占满内容区宽度（约为原窄卡布局的两倍），移动端同样自适应。"""
     st.markdown(LEAF_SPRIG_SVG, unsafe_allow_html=True)
-    st.markdown("<div style='height:40px'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:24px'></div>", unsafe_allow_html=True)
 
-    col_l, col_c, col_r = st.columns([1, 2, 1])
-    with col_c:
-        st.markdown(
-            f"<div class='tea-card' style='text-align:center'>"
-            f"<div class='tea-band'></div>"
-            f"<div style='display:flex;justify-content:center'>{GAIWAN_SVG}</div>"
-            f"<h2 style='margin-bottom:2px'>{t('app_title')}</h2>"
-            f"<p class='tagline'>{t('app_subtitle')}</p>"
-            f"<p class='muted'>{t('tagline')}</p>"
-            f"<p style='text-align:left'>{t('login_intro')}</p>"
-            f"</div>",
-            unsafe_allow_html=True,
+    st.markdown(
+        f"<div class='tea-card' style='text-align:center'>"
+        f"<div class='tea-band'></div>"
+        f"<div style='display:flex;justify-content:center'>{GAIWAN_SVG}</div>"
+        f"<h2 style='margin-bottom:2px'>{t('app_title')}</h2>"
+        f"<p class='tagline'>{t('app_subtitle')}</p>"
+        f"<p class='muted'>{t('tagline')}</p>"
+        f"<p style='text-align:left'>{t('login_intro')}</p>"
+        f"</div>",
+        unsafe_allow_html=True,
+    )
+    lang_selector()
+    with st.form("login_form"):
+        code = st.text_input(
+            t("access_code_label"),
+            type="password",  # 密码输入框，输入内容默认不可见
+            placeholder=t("access_code_placeholder"),
+            key="access_input",
         )
-        lang_selector()
-        with st.form("login_form"):
-            code = st.text_input(
-                t("access_code_label"),
-                type="password",  # 密码输入框，输入内容默认不可见
-                placeholder=t("access_code_placeholder"),
-                key="access_input",
-            )
-            submitted = st.form_submit_button(t("login_button"), use_container_width=True)
-        if submitted:
-            cleaned = code.strip()  # 去除首尾空格后精确匹配
-            if not cleaned:
-                st.warning(t("err_empty"))
-            elif cleaned != ACCESS_CODE:
-                st.error(t("err_wrong"))
-            else:
-                # 验证成功：登录状态写入 session_state，进入测试介绍页
-                st.session_state.authed = True
-                st.rerun()
+        submitted = st.form_submit_button(t("login_button"), use_container_width=True)
+    if submitted:
+        cleaned = code.strip()  # 去除首尾空格后精确匹配
+        if not cleaned:
+            st.warning(t("err_empty"))
+        elif cleaned != ACCESS_CODE:
+            st.error(t("err_wrong"))
+        else:
+            # 验证成功：登录状态写入 session_state，进入测试介绍页
+            st.session_state.authed = True
+            st.rerun()
     render_footer()
 
 
@@ -1631,9 +1630,32 @@ def render_footer():
 # ============================================================
 # 9) 主流程路由：登录 → 介绍 → 问卷 → 结果
 # ============================================================
+def scroll_top_on_page_change(page_name):
+    """页面切换时把主窗口滚动到顶部。
+
+    Streamlit 重跑会保留浏览器滚动位置，导致在页面底部点击按钮后，
+    下一页从底部开始显示。仅在页面标识变化时注入滚动脚本；
+    答题、切换语言等同页重跑不会触发，避免打断用户操作。
+    """
+    if st.session_state.get("_page") != page_name:
+        st.session_state._page = page_name
+        # 页面切换时置顶。新版 Streamlit 的滚动发生在内容容器而非 window，
+        # 因此同时重置 window 与若干候选滚动容器；约 2 秒内多次执行直到稳定
+        st.components.v1.html(
+            "<script>(function(){var n=0;var t=setInterval(function(){"
+            "var p=window.parent;p.scrollTo(0,0);"
+            "p.document.documentElement.scrollTop=0;p.document.body.scrollTop=0;"
+            "['[data-testid=\"stAppViewContainer\"]','[data-testid=\"stMain\"]','.stApp','main']"
+            ".forEach(function(s){var el=p.document.querySelector(s);if(el){el.scrollTop=0;}});"
+            "if(++n>=8){clearInterval(t);}},250);})();</script>",
+            height=0,
+        )
+
+
 inject_lang_typography()  # 韩文按词换行与行高微调，其他语言保持默认
 if not st.session_state.authed:
     # 未通过验证前，无法查看测试介绍、问卷及结果
+    scroll_top_on_page_change("login")
     page_login()
 else:
     with st.sidebar:
@@ -1641,8 +1663,11 @@ else:
         st.divider()
         st.button(t("logout"), on_click=do_logout, use_container_width=True)
     if st.session_state.result is not None:
+        scroll_top_on_page_change("result")
         page_result()
     elif st.session_state.started:
+        scroll_top_on_page_change("quiz")
         page_quiz()
     else:
+        scroll_top_on_page_change("intro")
         page_intro()
