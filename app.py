@@ -201,9 +201,9 @@ TEXT = {
     },
     "intro_format_title": {"zh": "测试形式", "ko": "테스트 방식", "en": "How it works"},
     "intro_format": {
-        "zh": "每道题是一条选择轴：左右两端代表两种自然的状态或偏好，拖动滑块到最贴近你的位置即可。中间位置同样是有效回答，代表“偶尔”“部分符合”或“两者皆可”。",
-        "ko": "각 문항은 하나의 선택 축입니다. 양끝은 두 가지 자연스러운 상태나 선호를 나타내며, 슬라이더를 자신에게 가장 가까운 위치로 옮기면 됩니다. 가운데 위치도 '가끔', '부분적으로 그렇다', '둘 다 좋다'를 뜻하는 유효한 답변입니다.",
-        "en": "Each question is a selection axis: the two ends describe two natural states or preferences — just slide to the position closest to you. Middle positions are valid answers too, meaning “occasionally”, “partly true”, or “both are fine”.",
+        "zh": "每道题提供一组并列的选项，代表两种自然状态或偏好之间的不同位置，点选最贴近你的一项即可。中间位置的选项同样是有效回答，代表“偶尔”“部分符合”或“两者皆可”。",
+        "ko": "각 문항에는 두 가지 자연스러운 상태나 선호 사이의 서로 다른 위치를 나타내는 선택지가 나란히 제시됩니다. 자신에게 가장 가까운 하나를 눌러 주세요. 가운데 위치의 선택지도 '가끔', '부분적으로 그렇다', '둘 다 좋다'를 뜻하는 유효한 답변입니다.",
+        "en": "Each question offers a row of options representing positions between two natural states or preferences — just tap the one closest to you. Middle options are valid answers too, meaning “occasionally”, “partly true”, or “both are fine”.",
     },
     "intro_meta": {
         "zh": "共 10 题 · 约 2 分钟完成 · 不收集任何个人信息",
@@ -226,11 +226,16 @@ TEXT = {
     "start_button": {"zh": "开始测试", "ko": "테스트 시작", "en": "Start the quiz"},
     # ---- 问卷页 ----
     "quiz_title": {"zh": "10 道情境题", "ko": "10개의 상황 질문", "en": "Ten situational questions"},
-    "quiz_total": {"zh": "共 10 题，拖动选择轴作答", "ko": "총 10문항, 선택 축을 움직여 답해 주세요", "en": "10 questions — answer by moving each slider"},
+    "quiz_total": {"zh": "共 10 题，点选最贴近你的选项", "ko": "총 10문항, 가장 가까운 답을 눌러 주세요", "en": "10 questions — tap the option closest to you"},
     "quiz_hint": {
-        "zh": "请逐题确认选择轴的位置，中间或默认位置同样可以作为有效回答。",
-        "ko": "각 문항에서 선택 축의 위치를 확인해 주세요. 가운데 또는 기본 위치도 유효한 답변입니다.",
-        "en": "Please confirm the slider position for each question — the middle or default position is also a valid answer.",
+        "zh": "请逐题点选最贴近你的选项，所有题目作答后即可提交。",
+        "ko": "각 문항에서 가장 가까운 답을 눌러 주세요. 모든 문항에 답하면 제출할 수 있습니다.",
+        "en": "Tap the option closest to you for each question — you can submit once all are answered.",
+    },
+    "quiz_unanswered": {
+        "zh": "还有 {n} 道题未作答（第 {nums} 题），请全部完成后再提交。",
+        "ko": "아직 답하지 않은 문항이 {n}개 있습니다({nums}번). 모두 답한 뒤 제출해 주세요.",
+        "en": "{n} question(s) still unanswered (No. {nums}) — please answer all before submitting.",
     },
     "quiz_progress_label": {"zh": "第 {n} 题 / 共 10 题", "ko": "{n}번 / 총 10문항", "en": "Question {n} of 10"},
     "submit_button": {"zh": "提交，查看我的茶生活风格", "ko": "제출하고 나의 티 라이프 스타일 보기", "en": "Submit and see my tea lifestyle"},
@@ -245,9 +250,9 @@ TEXT = {
     "secondary_label": {"zh": "辅助风格", "ko": "보조 스타일", "en": "Secondary style"},
     "dist_title": {"zh": "六种风格的相对得分分布", "ko": "여섯 가지 스타일의 상대 점수 분포", "en": "Relative score distribution across the six styles"},
     "dist_note": {
-        "zh": "得分只反映本次选择轴回答与六种风格的对应关系，不是专业心理测量分数。",
-        "ko": "점수는 이번 선택 축 답변과 여섯 가지 스타일의 대응 관계만을 보여줄 뿐, 전문적인 심리 측정 점수가 아닙니다.",
-        "en": "Scores only reflect how this set of slider answers corresponds to the six styles — they are not professional psychological measurements.",
+        "zh": "得分只反映本次作答与六种风格的对应关系，不是专业心理测量分数。",
+        "ko": "점수는 이번 답변과 여섯 가지 스타일의 대응 관계만을 보여줄 뿐, 전문적인 심리 측정 점수가 아닙니다.",
+        "en": "Scores only reflect how this set of answers corresponds to the six styles — they are not professional psychological measurements.",
     },
     "scenes_title": {"zh": "你可能喜欢的饮茶场景", "ko": "어울릴 만한 티타임 장면", "en": "Tea moments you may enjoy"},
     "teas_title": {"zh": "推荐尝试的中国茶与喝法", "ko": "추천하는 중국차와 마시는 방법", "en": "Chinese teas and ways of drinking to try"},
@@ -264,9 +269,9 @@ TEXT = {
     "retake_button": {"zh": "重新测试", "ko": "다시 테스트하기", "en": "Retake the quiz"},
     "edit_answers_button": {"zh": "返回修改答案", "ko": "답변 수정하기", "en": "Back to edit answers"},
     "result_restart_hint": {
-        "zh": "重新测试会把所有选择轴恢复为默认位置，并清除本次结果；语言与登录状态会保留。",
-        "ko": "다시 테스트하면 모든 선택 축이 기본 위치로 돌아가고 이번 결과가 지워집니다. 언어와 로그인 상태는 유지됩니다.",
-        "en": "Retaking resets all sliders to their default positions and clears this result; your language and login stay unchanged.",
+        "zh": "重新测试会清除所有答案与本次结果，回到未作答状态；语言与登录状态会保留。",
+        "ko": "다시 테스트하면 모든 답변과 이번 결과가 지워지고 처음 상태로 돌아갑니다. 언어와 로그인 상태는 유지됩니다.",
+        "en": "Retaking clears all answers and this result, returning to an unanswered state; your language and login stay unchanged.",
     },
     "footer_disclaimer": {
         "zh": "本测试仅用于茶文化体验、生活灵感与娱乐，不构成专业心理评估或健康建议。",
@@ -282,20 +287,19 @@ def t(key):
 
 
 # ============================================================
-# 4) 10 道选择轴题目数据
+# 4) 10 道情境题数据
 #    - axis: frequency(2) / willingness(2) / agreement(2) / preference(4)，自然交错
-#    - levels: 刻度数量（5 级为主，q6 为 4 级、q10 为 6 级，由题干自然决定）
-#    - default: 默认索引；奇数级放正中间，偶数级取靠近中间并在此明确记录
+#    - levels: 选项数量（5 个为主，q6 为 4 个、q10 为 6 个，由题干自然决定）
+#    - 答案保存为 0 起的整数索引：0 = 最左端，最大索引 = 最右端；未作答前不预选任何项
 #    - reverse: 反向计分标记（最高分在最左端），约三分之一题目采用，避免高分总在右侧
 #    - primary / secondary: 主要、辅助关联风格，二者必须不同
-#    - w_primary / w_secondary: 每个刻度对应的主要、辅助风格加分权重，长度必须等于 levels
+#    - w_primary / w_secondary: 每个选项对应的主要、辅助风格加分权重，长度必须等于 levels
 # ============================================================
 QUESTIONS = [
     {
         "id": "q1",
         "axis": "preference",
         "levels": 5,
-        "default": 2,  # 奇数级：正中间，表示“两者都可以”
         "reverse": False,
         "stem": {
             "zh": "周末午后，你想为自己泡一杯茶。此刻你更希望——",
@@ -320,7 +324,6 @@ QUESTIONS = [
         "id": "q2",
         "axis": "frequency",
         "levels": 5,
-        "default": 2,  # 正中间 = “偶尔”
         "reverse": False,
         "stem": {
             "zh": "喝茶时，你会留意并回想一款茶的香气、滋味等细节吗？",
@@ -345,7 +348,6 @@ QUESTIONS = [
         "id": "q3",
         "axis": "willingness",
         "levels": 5,
-        "default": 2,  # 正中间 = “可以试试看”
         "reverse": False,
         "stem": {
             "zh": "如果看到冷泡茶、水果茶等新式喝法，你愿意亲自尝试吗？",
@@ -370,7 +372,6 @@ QUESTIONS = [
         "id": "q4",
         "axis": "agreement",
         "levels": 5,
-        "default": 2,  # 正中间 = “部分符合”
         "reverse": False,
         "stem": {
             "zh": "家人或朋友来访时，我会很自然地想泡一壶茶招待大家。",
@@ -395,7 +396,6 @@ QUESTIONS = [
         "id": "q5",  # 核心情境题（同分时优先比较）
         "axis": "preference",
         "levels": 5,
-        "default": 2,  # 正中间 = “两种都好”
         "reverse": True,  # 反向计分：最高分在最左端
         "stem": {
             "zh": "理想的喝茶时刻，更接近哪一种？",
@@ -420,7 +420,6 @@ QUESTIONS = [
         "id": "q6",
         "axis": "willingness",
         "levels": 4,  # 偶数级：此题不适合设置中间立场，采用 4 级
-        "default": 1,  # 靠近中间的默认位置，在此明确记录
         "reverse": False,
         "stem": {
             "zh": "你愿不愿意用几句话简单记录喝过的茶，比如它的香气和口感？",
@@ -444,7 +443,6 @@ QUESTIONS = [
         "id": "q7",
         "axis": "preference",
         "levels": 5,
-        "default": 2,
         "reverse": True,  # 反向计分：探索意愿放在左端，最高分在最左端
         "stem": {
             "zh": "面对没喝过的茶，你通常——",
@@ -469,7 +467,6 @@ QUESTIONS = [
         "id": "q8",
         "axis": "agreement",
         "levels": 5,
-        "default": 2,
         "reverse": False,
         "stem": {
             "zh": "喝第一口茶时，我会先留意它本身的香气和滋味。",
@@ -493,7 +490,6 @@ QUESTIONS = [
         "id": "q9",
         "axis": "frequency",
         "levels": 5,
-        "default": 2,
         "reverse": True,  # 反向计分：左端“从不添加”给本味派最高分
         "stem": {
             "zh": "平时喝茶时，你会往茶里加牛奶、水果或其他风味吗？",
@@ -518,7 +514,6 @@ QUESTIONS = [
         "id": "q10",  # 核心情境题（同分时优先比较）
         "axis": "preference",
         "levels": 6,  # 偶数级：冲泡投入是连续谱，采用 6 级更自然
-        "default": 2,  # 靠近中间的默认位置，在此明确记录
         "reverse": False,
         "stem": {
             "zh": "如果有一套顺手的茶具摆在面前，你更倾向于——",
@@ -1189,7 +1184,6 @@ def validate_data():
         # 同一道题的主要与辅助关联风格必须不同
         assert q["primary"] != q["secondary"], f"{q['id']} 主要与辅助风格相同"
         assert q["primary"] in STYLES and q["secondary"] in STYLES
-        assert 0 <= q["default"] < n, f"{q['id']} 默认索引越界"
         related_styles.add(q["primary"])
         related_styles.add(q["secondary"])
     # 四种题型数量符合设计：频率 2 / 意愿 2 / 符合 2 / 双端偏好 4
@@ -1362,63 +1356,69 @@ def page_intro():
     render_footer()
 
 
+def _save_answer(qid):
+    """选项变更回调：把本次点选（0 起整数索引）立即持久化到 saved_answers。"""
+    st.session_state.saved_answers[qid] = st.session_state[f"ans_{qid}"]
+
+
 def page_quiz():
-    """问卷页：10 道题全部放在 st.form 中，稳定 key 保证切语言/重跑不丢轴位置。"""
+    """问卷页：每道题一组并列选项（segmented_control），未作答前不预选任何项。
+
+    设计说明：
+    - 不再使用 st.form。每次点选都通过 on_change 立即写入 saved_answers（0 起整数索引），
+      因此切换语言、重新运行或从结果页返回时，选中项始终从已提交的状态恢复；
+    - 实测：该控件在选项文字随语言变化时，已提交的选中项仍能正确恢复；
+    - 答案索引与语言无关，切换语言只改变显示文案。
+    """
     lang = st.session_state.lang
-    # saved_answers 持久保存各题轴位置（0 起索引）：
-    # 即使控件状态被清理（如从结果页返回），也能按最后提交的位置恢复
-    if "saved_answers" not in st.session_state:
-        st.session_state.saved_answers = {q["id"]: q["default"] for q in QUESTIONS}
+    st.session_state.setdefault("saved_answers", {})
     saved = st.session_state.saved_answers
-    # 预置各题控件状态（不传 value 参数）：
-    # 实测表明，带 key 的表单控件一旦传入 value 参数，外部控件触发重跑时会把轴重置回 value；
-    # 改为渲染前写入 session_state，未提交的轴位置在切换语言等重跑后也能由前端保留。
+    # 若控件状态丢失（如从结果页返回时控件未渲染），按已保存的答案预置
     for q in QUESTIONS:
-        st.session_state.setdefault(f"ans_{q['id']}", saved[q["id"]])
+        key = f"ans_{q['id']}"
+        if q["id"] in saved and key not in st.session_state:
+            st.session_state[key] = saved[q["id"]]
     st.title(t("quiz_title"))
     st.markdown(f"<p class='muted'>{t('quiz_total')}</p>", unsafe_allow_html=True)
     st.info(t("quiz_hint"))
 
-    with st.form("quiz_form"):
-        for idx, q in enumerate(QUESTIONS):
+    for idx, q in enumerate(QUESTIONS):
+        st.markdown(
+            f"**{t('quiz_progress_label').format(n=idx + 1)} · {q['stem'][lang]}**"
+        )
+        # 左右端点完整展示；手机端每题仅堆放左右两个短标签
+        c_left, c_right = st.columns(2)
+        with c_left:
+            st.caption("← " + q["left"][lang])
+        with c_right:
             st.markdown(
-                f"**{t('quiz_progress_label').format(n=idx + 1)} · {q['stem'][lang]}**"
+                f"<div style='text-align:right' class='muted'>{q['right'][lang]} →</div>",
+                unsafe_allow_html=True,
             )
-            # 左右端点完整展示；手机端每题仅堆放左右两个短标签，刻度文字由滑块当前值显示
-            c_left, c_right = st.columns(2)
-            with c_left:
-                st.caption("← " + q["left"][lang])
-            with c_right:
-                st.markdown(
-                    f"<div style='text-align:right' class='muted'>{q['right'][lang]} →</div>",
-                    unsafe_allow_html=True,
-                )
-            # 选择轴：值为 0 起的整数索引。
-            # 实测：format_func 输出随语言变化会导致浏览器端重建滑块并把位置重置到最左端，
-            # 因此刻度文字使用语言中立的位置序号，翻译后的含义放在下方静态图例中，
-            # 题干 label 允许随语言变化（已验证不影响轴位置）。
-            st.select_slider(
-                label=q["stem"][lang],
-                options=list(range(q["levels"])),
-                format_func=lambda i: str(i + 1),
-                key=f"ans_{q['id']}",  # 默认索引已在渲染前预置进 session_state（奇数级居中、偶数级近中）
-                label_visibility="collapsed",
-            )
-            # 刻度图例：当前语言下每个位置的含义（静态文本，随语言切换整体更新，不触发控件重建）
-            legend = " · ".join(
-                f"{i + 1} {q['labels'][lang][i]}" for i in range(q["levels"])
-            )
-            st.caption(legend)
-            st.caption(q["mid"][lang])
-            st.divider()
-        submitted = st.form_submit_button(t("submit_button"), use_container_width=True)
+        # 并列选项：值为 0 起的整数索引；default=None 表示未作答前不预选任何项
+        st.segmented_control(
+            label=q["stem"][lang],
+            options=list(range(q["levels"])),
+            format_func=lambda i, q=q: q["labels"][lang][i],
+            key=f"ans_{q['id']}",
+            default=None,
+            on_change=_save_answer,
+            args=(q["id"],),
+            label_visibility="collapsed",
+        )
+        st.caption(q["mid"][lang])
+        st.divider()
 
-    if submitted:
-        # 从 session_state 读取各题轴位置（0 起整数索引），持久保存并计分进入结果页
-        answers = [st.session_state[f"ans_{q['id']}"] for q in QUESTIONS]
-        st.session_state.saved_answers = {q["id"]: a for q, a in zip(QUESTIONS, answers)}
-        st.session_state.result = compute_result(answers)
-        st.rerun()
+    if st.button(t("submit_button"), type="primary", use_container_width=True):
+        # 提交前检查是否全部作答，未完成的题目给出明确提示
+        missing = [i + 1 for i, q in enumerate(QUESTIONS) if saved.get(q["id"]) is None]
+        if missing:
+            nums = "、".join(str(n) for n in missing) if lang == "zh" else ", ".join(str(n) for n in missing)
+            st.warning(t("quiz_unanswered").format(n=len(missing), nums=nums))
+        else:
+            answers = [saved[q["id"]] for q in QUESTIONS]
+            st.session_state.result = compute_result(answers)
+            st.rerun()
     render_footer()
 
 
@@ -1536,11 +1536,11 @@ def page_result():
     if st.button(t("edit_answers_button")):
         st.session_state.result = None
         st.rerun()
-    # 重新测试：所有选择轴恢复默认索引，清除主/辅风格与得分，保留语言与登录
+    # 重新测试：清除所有答案（回到未作答状态）与结果，保留语言与登录
     if st.button(t("retake_button"), type="primary"):
         for q in QUESTIONS:
             st.session_state.pop(f"ans_{q['id']}", None)
-        st.session_state.saved_answers = {q["id"]: q["default"] for q in QUESTIONS}
+        st.session_state.saved_answers = {}
         st.session_state.result = None
         st.session_state.started = True
         st.rerun()
