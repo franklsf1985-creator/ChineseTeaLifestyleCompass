@@ -1,0 +1,6 @@
+# Streamlit 主题：与 app.py 内 CSS 一致的低饱和茶文化配色
+[theme]
+primaryColor = "#788774"
+backgroundColor = "#FAF9F5"
+secondaryBackgroundColor = "#FFFEFB"
+textColor = "#343832"
